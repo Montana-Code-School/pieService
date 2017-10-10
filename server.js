@@ -12,9 +12,9 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log('we have connected');
+  console.log('we have connected');
 });
 
 app.listen(5000, function() {
-   console.log("Listening on 5000");
+  console.log("Listening on 5000");
 });
