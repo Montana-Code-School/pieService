@@ -1,18 +1,18 @@
 var express = require("express");
 var app = express();
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
-//mongoose.connect('mongodb://localhost/{put your database right here}');
+app.use(express.static('public'));
+app.use(bodyParser.json({type:'application/json'}));
+app.use(bodyParser.urlencoded({extended:true}));
+
+mongoose.connect('mongodb://localhost/pieService');
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
-
 db.once('open', function() {
     console.log('we have connected');
-});
-
-app.get("/", function(req, res) {
-    res.sendfile('index.html');
 });
 
 app.listen(5000, function() {
